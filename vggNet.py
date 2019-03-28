@@ -354,7 +354,11 @@ class Model():
         if with_bias:
             return conv + self.bias_variable([ out_features ])
         return conv
-
+    
+    # USAGE:
+    # with tf.variable_scope("Conv5", reuse = tf.AUTO_REUSE):
+    #    current = self.batch_activ_conv(current, 128, 256, 3, self.is_training, self.keep_prob)
+    
     def batch_activ_conv(self, current, in_features, out_features, kernel_size, is_training, keep_prob):
         with tf.variable_scope("composite_function", reuse = tf.AUTO_REUSE):
             current = self.conv2d(current, in_features, out_features, kernel_size)
